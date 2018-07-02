@@ -1,5 +1,6 @@
 package nerallan.com.chat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> messages = new ArrayList<>();
 
 
+    //firebase auth object
+    private FirebaseAuth firebaseAuth;
+
+    //view objects
+    private TextView textViewUserEmail;
+    private Button buttonLogout;
+    private FirebaseUser user;
+    public MainActivity() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +58,26 @@ public class MainActivity extends AppCompatActivity {
 
         // how to display data through adapter
         mMessagesRecycler.setLayoutManager(new LinearLayoutManager(this));
+        //initializing firebase authentication object
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        //if the user is not logged in
+        //that means current user will return null
+        if(firebaseAuth.getCurrentUser() == null){
+            //closing this activity
+            finish();
+            //starting login activity
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+
+        //getting current user
+        user = firebaseAuth.getCurrentUser();
+        //initializing views
+        textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
+        buttonLogout = (Button) findViewById(R.id.buttonLogout);
+
+        //displaying logged in user name
+        //textViewUserEmail.setText("Welcome "+user.getEmail());
 
 
         final DataAdapter dataAdapter = new DataAdapter(this, messages);
@@ -63,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                myRef.push().setValue(msg+getCurrentTime(view));
+                myRef.push().setValue(user.getEmail()+ msg+getCurrentTime(view));
                 mEditTextMessage.setText("");
                 //getCurrentTime(view);
             }

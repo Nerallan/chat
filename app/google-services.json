@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "678414319532",
+    "firebase_url": "https://chat-e4e9c.firebaseio.com",
+    "project_id": "chat-e4e9c",
+    "storage_bucket": "chat-e4e9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678414319532:android:b505ee64d4728a6c",
+        "android_client_info": {
+          "package_name": "nerallan.com.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678414319532-89d7clcdlj60qiujfl8hllir0hdked5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nerallan.com.chat",
+            "certificate_hash": "b5e16804048c71c18f92c5d076eb3e87b61f40ff"
+          }
+        },
+        {
+          "client_id": "678414319532-rphaomjdq4488da27k26lhbiq2k4g1l9.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "678414319532-rphaomjdq4488da27k26lhbiq2k4g1l9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaC6NETP9bq1npzRf2Mtfr1CA3h_bcDMg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678414319532-rphaomjdq4488da27k26lhbiq2k4g1l9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

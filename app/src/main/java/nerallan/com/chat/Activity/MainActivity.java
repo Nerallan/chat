@@ -1,4 +1,4 @@
-package nerallan.com.chat;
+package nerallan.com.chat.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import nerallan.com.chat.Adapter.DataAdapter;
+import nerallan.com.chat.R;
+
 public class MainActivity extends AppCompatActivity {
 
     private static int MAX_MESSAGE_LENGTH = 100;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     Button mSendButton;
     RecyclerView mMessagesRecycler;
 
+//    List<ChatModel> chatModels = new ArrayList<>();
     ArrayList<String> messages = new ArrayList<>();
 
 
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewUserEmail;
     private Button buttonLogout;
     private FirebaseUser user;
+
     public MainActivity() {
     }
 
@@ -79,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         //displaying logged in user name
         //textViewUserEmail.setText("Welcome "+user.getEmail());
 
+//        final ChatModel chatModel = new ChatModel();
+
 
         final DataAdapter dataAdapter = new DataAdapter(this, messages);
         mMessagesRecycler.setAdapter(dataAdapter);
@@ -95,13 +102,20 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Сообщение слишком большое!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+//                chatModel.setMessageText(msg);
+//                Calendar calendar = Calendar.getInstance();
+//                SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm");
+//                String strDate = mdformat.format(calendar.getTime());
+//
+//                chatModel.setMessageTime(strDate);
+//                chatModel.setMessageUser(firebaseAuth.getCurrentUser().toString());
 
-                myRef.push().setValue(user.getEmail()+ msg+getCurrentTime(view));
+                myRef.push().setValue(user.getEmail() + "      " + msg + "       " + getCurrentTime(view));
                 mEditTextMessage.setText("");
                 //getCurrentTime(view);
             }
         });
-
+//        chatModels.add(chatModel);
         myRef.addChildEventListener(new ChildEventListener() {
 
             // calls when push message in db(collection messages)
@@ -145,8 +159,8 @@ public class MainActivity extends AppCompatActivity {
         //displayTime(strDate);
         return strDate;
     }
-    private void displayTime(String time){
-        TextView textView = (TextView) findViewById(R.id.current_time);
-        textView.setText(time);
-    }
+//    private void displayTime(String time){
+//        TextView textView = (TextView) findViewById(R.id.sender);
+//        textView.setText(time);
+//    }
 }

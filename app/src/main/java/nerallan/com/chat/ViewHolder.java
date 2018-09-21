@@ -12,12 +12,13 @@ import android.widget.TextView;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
-    TextView message;
+    public TextView message;
     TextView time;
+    TextView user;
     // constructor of basic class
     public ViewHolder(View itemView) {
         super(itemView);
         message = itemView.findViewById(R.id.message_item);
-        time = itemView.findViewById(R.id.current_time);
+//        user = itemView.findViewById(R.id.sender);
     }
 }

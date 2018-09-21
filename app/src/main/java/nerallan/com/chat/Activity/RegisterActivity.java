@@ -1,4 +1,4 @@
-package nerallan.com.chat;
+package nerallan.com.chat.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import nerallan.com.chat.R;
 
 /**
  * Created by Nerallan on 7/2/2018.
@@ -100,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             //checking if success
                             if(task.isSuccessful()){
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                             }else{
                                 //display some message here
                                 Toast.makeText(RegisterActivity.this,"Registration Error",Toast.LENGTH_LONG).show();

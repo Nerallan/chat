@@ -1,4 +1,4 @@
-package nerallan.com.chat;
+package nerallan.com.chat.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import nerallan.com.chat.Model.ChatModel;
+import nerallan.com.chat.R;
+import nerallan.com.chat.ViewHolder;
 
 /**
  * Created by Nerallan on 6/16/2018.
@@ -22,7 +27,7 @@ public class DataAdapter extends RecyclerView.Adapter<ViewHolder>{
     LayoutInflater inflater;
 
 
-    ArrayList<ChatMessage> chatMessages;
+    private List<ChatModel> chatModels;
 
 
     // context get ability to mainActivity to use inflater
@@ -42,6 +47,9 @@ public class DataAdapter extends RecyclerView.Adapter<ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+//        ChatModel chatModel = chatModels.get(position);
+//        holder.message.setText(chatModel.getMessageText());
+//        holder.user.setText(chatModel.getMessageText());
         String msg = messages.get(position);
         // set message to viewholder textvview;
         holder.message.setText(msg);

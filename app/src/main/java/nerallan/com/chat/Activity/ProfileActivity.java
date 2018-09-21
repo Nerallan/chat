@@ -1,4 +1,4 @@
-package nerallan.com.chat;
+package nerallan.com.chat.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import nerallan.com.chat.R;
+
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     //firebase auth object
@@ -18,6 +20,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     //view objects
     private TextView textViewUserEmail;
     private Button buttonLogout;
+    private Button buttonStartChat;
 
 
     @Override
@@ -43,12 +46,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         //initializing views
         textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
+        buttonStartChat = (Button) findViewById(R.id.buttonStartChat);
 
         //displaying logged in user name
-        textViewUserEmail.setText("Welcome "+user.getEmail());
+        textViewUserEmail.setText("Welcome " + user.getEmail());
 
         //adding listener to button
         buttonLogout.setOnClickListener(this);
+        buttonStartChat.setOnClickListener(this);
     }
 
     @Override
@@ -61,6 +66,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             finish();
             //starting login activity
             startActivity(new Intent(this, LoginActivity.class));
+        }
+
+        if (view == buttonStartChat){
+            //closing activity
+            finish();
+            //starting login activity
+            startActivity(new Intent(this, MainActivity.class));
         }
     }
 }
